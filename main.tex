@@ -2,6 +2,7 @@
 \usetheme[compress]{Singapore}
 
 \usepackage[brazil]{babel}
+\usepackage{listings}
 
 \begin{document}
 
@@ -51,8 +52,26 @@
 
 \section{Algoritmos e estruturas de dados}
 
-\begin{frame}
-    \frametitle{Algoritmos e estruturas de dados}
+\begin{frame}[fragile]
+    \frametitle{Implementação diretamente em SQL ($k = 1$)}
+
+    $\sigma_{1, (10.0, 20.0)}(\texttt{points})$
+    \begin{lstlisting}[language=SQL]
+    SELECT *
+    FROM points p
+    WHERE NOT EXISTS (
+        SELECT *
+        FROM points q
+        WHERE (q.x-10.0)*(q.x-10.0)+
+              (q.y-20.0)*(q.y-20.0)
+                 <
+              (p.x-10.0)*(p.x-10.0)+
+              (p.y-20.0)*(p.y-20.0)
+    )
+    \end{lstlisting}
+
+    \pause
+    Complexidade: $O(n^2)$
 \end{frame}
 
 \section{Aplicações}
