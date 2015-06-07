@@ -9,31 +9,11 @@ for pattern in $$pattern_list; do \
 done
 endef
 
-define dirss
-$(patsubst %/,%,$(dir $1))
-endef
+all:
+	latexmk -pdf
 
-TEX := $(shell find . -name "*.tex" -exec \
-	grep --files-with-matches '^\\end{document}$$' {} +)
-
-# Dependências
-DEP := $(TEX:%.tex=%.dep.mk)
-
-PDF := $(TEX:%.tex=%.pdf)
-
-# Regras
-
-.DEFAULT_GOAL := all
-
-all: $(PDF)
-
-$(DEP): %.dep.mk:
-
-$(PDF): %.pdf: %.dep.mk
-	latexmk -pdf   -M -MF $*.dep.mk -MP   $*.tex   -g\
-		-outdir=$(call dirss, $*.pdf) -auxdir=$(call dirss $*.pdf)
-	touch $*.pdf
-
+# For some reason, .nav and .snm files are not cleaned by latexmk.
+# So, we do by hand.
 mostlyclean:
 	$(call clean-section,LaTeX temporaries)
 
