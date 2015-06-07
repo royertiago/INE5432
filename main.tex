@@ -3,6 +3,7 @@
 
 \usepackage[brazil]{babel}
 \usepackage{listings}
+\usepackage{tikz}
 
 \begin{document}
 
@@ -72,6 +73,37 @@
 
     \pause
     Complexidade: $O(n^2)$
+\end{frame}
+
+\begin{frame}
+    \frametitle<1>{Restrições de intervalo}
+    \frametitle<2>{Problema}
+    \centering
+    \begin{tikzpicture}[>=latex, scale=1.5]
+        \def\d{1.3} % Delta from a
+        \def\h{0.1} % Altura da marca
+        \fill (2, 2) circle [radius = 2pt];
+        \node at (2, 2.3) {$a$};
+        \draw[->] (-1, 0) -- (4, 0);
+        \draw[->] (0, -1) -- (0, 4);
+
+        \draw (2-\d, \h) -- (2-\d, -\h) (2-\d, -0.2-\h) node {$a.x - \delta$};
+        \draw (2+\d, \h) -- (2+\d, -\h) (2+\d, -0.2-\h) node {$a.x + \delta$};
+        \draw (\h, 2-\d) -- (-\h, 2-\d) (-0.5-\h, 2-\d) node {$a.y - \delta$};
+        \draw (\h, 2+\d) -- (-\h, 2+\d) (-0.5-\h, 2+\d) node {$a.y + \delta$};
+        \draw (2-\d, 2-\d) rectangle (2+\d, 2+\d);
+
+        \onslide<1> {
+            \draw[dashed] (2, 2) circle [radius = \d];
+            \fill[green] (2.5, 3) circle [radius = 2pt];
+        }
+
+        \onslide<2> {
+            \draw[dashed] (2, 2) circle [radius = \d+0.2];
+            \fill[red] (2 + \d - 0.2, 2 - \d + 0.1) circle [radius = 2pt];
+            \fill[red] (2 + \d + 0.1, 2) circle [radius = 2pt];
+        }
+    \end{tikzpicture}
 \end{frame}
 
 \section{Aplicações}
