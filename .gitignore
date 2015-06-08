@@ -18,6 +18,7 @@
 
 # Binary output
 *.pdf
+*.png
 
 # Vim temporaries
 .*.swp

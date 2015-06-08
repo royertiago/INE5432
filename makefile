@@ -9,8 +9,11 @@ for pattern in $$pattern_list; do \
 done
 endef
 
-all:
+all: kdtree.png
 	latexmk -pdf
+
+kdtree.png: kdtree.svg
+	inkscape -D -z --file=$< --export-png=$@
 
 # For some reason, .nav and .snm files are not cleaned by latexmk.
 # So, we do by hand.
