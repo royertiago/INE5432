@@ -4,6 +4,7 @@
 \usepackage[brazil]{babel}
 \usepackage{listings}
 \usepackage{tikz}
+\usepackage{newlfont}
 
 \begin{document}
 
@@ -138,13 +139,26 @@
     Exemplo: projeções de $\mathbb R^n$ em $\mathbb R$
 \end{frame}
 
-\section{Aplicações}
+\section{Extensões}
+
 \begin{frame}
-    \frametitle{Aplicações}
+    \centering
+    \Huge{Extensões}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Referências}
+    \frametitle{$k$NN Join}
+
+    \begin{equation*}
+        E_1 \Join_{k\mathrm{NN}} E_2
+    \end{equation*}
+
+    Pares $(e_1, e_2) \in E_1 \times E_2$ tais que
+    $e_2$ é um dos $k$ mais próximos a $e_1$.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Referências (parcial)}
     \bibliographystyle{plain}
     \bibliography{bib}
 \end{frame}
